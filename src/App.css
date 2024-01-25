@@ -1,38 +1,122 @@
-.App {
-  text-align: center;
+:root {
+  --light-blue: #E3F6FF;
+  --blue: #8ECBE6;
+  --dark-blue: #275F77;
+  --yellow-conrast: #FFEA20;
+  --main-white: #F5F5F5;
+  --main-black: #2C2C2C;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Buttons design */
+.button {
+  position: relative;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: var(--dark-blue);
+  color: var(--main-white);
+  font-weight: 400;
+  font-size: 15px;
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.read-more-button {
+  vertical-align: middle;
+  display: inline-block;
+  width: 12rem;
+  height: auto;
+ 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.book-now-button {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  border: 3px solid var(--blue);
+}
+
+.book-now-button:hover {
+  transform: scale(1.05);
+  border-color: var(--light-blue); 
+}
+
+.book-now-button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.book-now-button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+/* Here we place the navigation design */
+nav {
+  display: flex;
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--dark-blue);
+  color: var(--main-white);
+}
+
+.logo {
+  font-size: 20pt;
+  letter-spacing: 1.5pt;
+  font-weight: 200;
+}
+
+.logInButton {
+  border: none;
+  color: var(--dark-blue);
+  letter-spacing: 0.5pt;
+  border-radius: 20px;
+  gap: 0.5em;
+  background-color: var(--light-blue);
+}
+
+.logInIcon {
+  color: var(--dark-blue);
+  background-color: var(--light-blue);
+  border: 1px solid var(--dark-blue);
+  padding: 5px;
+  border-radius: 50px;
+  position: static;
+}
+
+.logInButton:hover {
+  background-color: #275F77;
+}
+
+.log-in-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  height: 100vh;
+  background-image: url("../imgs/ocean-nature-white-shore-landscape\ Large.jpeg");
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--dark-blue);
 }

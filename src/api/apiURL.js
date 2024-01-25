@@ -1,0 +1,1 @@
+export const api_base = "https://api.noroff.dev/api/v1/holidaze/"; 
