@@ -13,6 +13,11 @@
   padding: 0;
 }
 
+.icon {
+  color: var(--light-blue);
+  
+}
+
 /* Buttons design */
 .button {
   position: relative;

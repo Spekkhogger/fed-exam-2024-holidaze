@@ -10,7 +10,7 @@ import { api_base } from '../../api/apiURL';
 
 export default function LogInPage() {
     const {register, handleSubmit} = useForm();
-    // const {isLoggedIn, login} = useUserStore();
+    const { setUser, setLoggedInStatus } = useUserActions();
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = useState(null);
 
@@ -41,7 +41,8 @@ export default function LogInPage() {
             }
 
             // Save user in global state
-            useUserActions.setUser(json);
+            setUser(json);
+            setLoggedInStatus(true);
 
             //Redirect to dashboard after successful login
             // navigate('/'); 
@@ -49,7 +50,7 @@ export default function LogInPage() {
 
         } catch (error) {
             setError(error);
-            
+
         } finally {
             setIsLoading(false);
         }
@@ -68,7 +69,7 @@ export default function LogInPage() {
                         })}
                         type="email" 
                         placeholder="E-mail" 
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                        className="shadow border rounded w-full py-2 px-3"
                         required />
                         <input 
                         {...register("password", {
@@ -76,11 +77,11 @@ export default function LogInPage() {
                         })}
                         type="password"
                         placeholder="Password"
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" 
+                        className="shadow border rounded w-full py-2 px-3" 
                         required/>
                         <button 
                         type="submit"
-                        className="button"
+                        className="button w-full rounded"
                         >Log in</button>
                     </form>
                     <p>Forgot password?</p>
@@ -88,7 +89,7 @@ export default function LogInPage() {
                 <div className="flex flex-col py-2">
                     <p>New to Holidaze?</p>
                     <Link to="/auth/register" className='button book-now-button'>Create new account</Link>
-                    <Link to="/auth/registerVenue" className='button book-now-button'>Register as venue owner</Link>
+                    <Link to="/auth/register-manager" className='button book-now-button'>Register as venue owner</Link>
                 </div>
             </div>
         </div>

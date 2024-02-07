@@ -109,7 +109,7 @@ export default function RegisterUser() {
                     <p>Forgot password?</p>
                 </div>
                 <div className="flex flex-col py-2">
-                    <Link to="/auth/registerVenue" className='button book-now-button'>Register as venue owner</Link>
+                    <Link to="/auth/register-manager" className='button book-now-button'>Register as venue owner</Link>
                     <Link to="/auth/login" className='mt-5'>Already have an account? Log in here</Link>
                 </div>
             </div>

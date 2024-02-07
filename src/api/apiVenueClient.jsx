@@ -4,7 +4,7 @@ const apiVenueClient = {
     // Fetch all venues
     getAllVenues: async () => {
         try {
-            const response = await fetch(`${api_base}/venues`, {
+            const response = await fetch(`${api_base}venues`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ const apiVenueClient = {
     // Fetch venue by id 
     getVenueById: async (id) => {
         try {
-            const response = await fetch(`${api_base}/venues/${id}`, {
+            const response = await fetch(`${api_base}venues/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

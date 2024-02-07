@@ -6,8 +6,11 @@ const useUserStore = create(
         (set) => ({
             isLoggedIn: false,
             user: null,
-            setUser: (user) => set({ user: user, isLoggedIn: true}),
+            token: null,
+            setUser: (user) => set({ user: user, isLoggedIn: true, token: user.accessToken}),
             clearUser: () => set({ user: null, isLoggedIn: false}),
+            setLoggedInStatus: (status) => set({ isLoggedIn: status }),
+            isUserLoggedIn: () => set((state) => state.isLoggedIn),
             }),
         {
         name: 'user',
@@ -15,7 +18,10 @@ const useUserStore = create(
     )
 );
 
-export const useToken = () => useUserStore((state) => state.user?.token);
+// To be determined
+export const useToken = () => useUserStore((state) => state.user?.accessToken);
+export const useRole = () => useUserStore((state) => state.user?.venueManager);
+
 
 export const useUserActions = () => {
     const {setUser, clearUser} = useUserStore();
