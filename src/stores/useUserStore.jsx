@@ -8,7 +8,7 @@ const useUserStore = create(
             user: null,
             token: null,
             setUser: (user) => set({ user: user, isLoggedIn: true, token: user.accessToken}),
-            clearUser: () => set({ user: null, isLoggedIn: false}),
+            clearUser: () => set({ user: null, isLoggedIn: false, token: null}),
             setLoggedInStatus: (status) => set({ isLoggedIn: status }),
             isUserLoggedIn: () => set((state) => state.isLoggedIn),
             }),
