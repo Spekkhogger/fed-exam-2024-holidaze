@@ -40,7 +40,7 @@ export default function RegisterManager() {
             useUserActions.setUser(json);
 
             //Redirect to dashboard after successful login
-            // navigate('/'); 
+            navigate('/login'); 
 
         } catch (error) {
             setError(error);
@@ -100,10 +100,11 @@ export default function RegisterManager() {
                         className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" 
                         />
                         <input
-                        {...register("isVenueOwner", {
+                        {...register("venueManager", {
                             required: true,
+                            value: true,
                         })}
-                        type="checkbox"
+                        type="hidden"
                         
                         />
                         <button 

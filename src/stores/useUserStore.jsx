@@ -18,10 +18,10 @@ const useUserStore = create(
     )
 );
 
-// To be determined
+
 export const useToken = () => useUserStore((state) => state.user?.accessToken);
 export const useRole = () => useUserStore((state) => state.user?.venueManager);
-
+export const useUser = () => useUserStore((state) => state.user);
 
 export const useUserActions = () => {
     const {setUser, clearUser} = useUserStore();

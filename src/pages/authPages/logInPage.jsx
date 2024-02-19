@@ -53,6 +53,7 @@ export default function LogInPage() {
 
         } finally {
             setIsLoading(false);
+            navigate('/');
         }
     }
 

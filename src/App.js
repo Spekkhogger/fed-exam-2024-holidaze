@@ -8,6 +8,10 @@ import RegisterManager from './pages/authPages/registerManagerPage';
 import VenuePage from './pages/venuePage';
 import VenueDetails from './venues/Venuesdetails';
 
+import ContactPage from './pages/contactPage';
+
+import ProfilePage from './pages/profilePage';
+import EditProfile from './pages/EditProfile';
 
 import './App.css';
 
@@ -23,6 +27,9 @@ function App() {
           <Route path="/auth/register-manager" element={<RegisterManager />}/>
           <Route path="/browse" element={<VenuePage />}/>
           <Route path="/venues/:id" element={<VenueDetails />}/>
+          <Route path="/contact" element={<ContactPage />}/>
+          <Route path="/profile" element={<ProfilePage />}/>
+          <Route path="/edit-profile" element={<EditProfile />}/>
         </Routes>
       </div>
     </Router>

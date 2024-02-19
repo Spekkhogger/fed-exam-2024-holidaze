@@ -40,14 +40,13 @@ export default function RegisterUser() {
             // Save user in global state
             useUserActions.setUser(json);
 
-            //Redirect to dashboard after successful login
-            // navigate('/'); 
         
 
         } catch (error) {
             setError(error);
         } finally {
             setIsLoading(false);
+            navigate('/login');
         }
     }
 

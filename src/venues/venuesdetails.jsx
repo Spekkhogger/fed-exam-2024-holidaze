@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import apiVenueClient from "../api/apiVenueClient";
+import useOwner from "../api/auth/checkOwner";
 
 const VenueDetails = () => {
     const [singleVenue, setSingleVenue] = useState([]);
@@ -11,6 +12,7 @@ const VenueDetails = () => {
         try {
           const venueData = await apiVenueClient.getVenueById(id);
           setSingleVenue(venueData);
+          console.log(venueData);
         } catch (error) {
           console.error('Error fetching venue:', error);
         }
@@ -19,6 +21,9 @@ const VenueDetails = () => {
       fetchVenue();
       console.log(singleVenue)
     }, [id]);
+
+    const ownerName = singleVenue.owner?.name;
+    const isOwner = useOwner(ownerName);
   
     return (
       <div>
@@ -26,7 +31,12 @@ const VenueDetails = () => {
         <h1>{singleVenue.name}</h1>
         <img src={singleVenue.media} alt={singleVenue.name} />
         <p>{singleVenue.description}</p>
-        <button className="button">Book</button>
+        {!isOwner ? (
+          <button className="button">Book</button>
+        ) : (
+          <Link to={`/venues/${id}/edit`}>
+            <button className="button">Edit</button>
+          </Link>)}
       </div>
     );
   };
