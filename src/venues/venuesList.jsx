@@ -27,11 +27,15 @@ const VenueList = () => {
         <h1>Venues</h1>
         <ul>
           {venues.map((venue) => (
-            // Improve
-            // Needs to link to the detailspage for each venue
-            <li key={venue.id}>
-                <Link to={`/venues/${venue.id}`} >{venue.name}</Link>
-                
+            
+            <li key={venue.id} className="card">
+                <Link to={`/venues/${venue.id}`}>
+                  <img src={venue.media} alt={venue.name} />
+                  <h3>{venue.name}</h3>
+                </Link>
+                <Link to={`/profile/${venue.owner.name}`} className="button">
+                  <p>{venue.owner.name}</p>
+                </Link>
             </li> 
           ))}
         </ul>

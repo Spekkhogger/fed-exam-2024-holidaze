@@ -7,6 +7,8 @@ import RegisterManager from './pages/authPages/registerManagerPage';
 
 import VenuePage from './pages/venuePage';
 import VenueDetails from './venues/Venuesdetails';
+import CreateNewVenue from './pages/PostVenue';
+import EditVenue from './pages/EditVenuePage';
 
 import ContactPage from './pages/contactPage';
 
@@ -27,9 +29,11 @@ function App() {
           <Route path="/auth/register-manager" element={<RegisterManager />}/>
           <Route path="/browse" element={<VenuePage />}/>
           <Route path="/venues/:id" element={<VenueDetails />}/>
+          <Route path="/venues/:id/edit" element={<EditVenue />} />
           <Route path="/contact" element={<ContactPage />}/>
-          <Route path="/profile" element={<ProfilePage />}/>
-          <Route path="/edit-profile" element={<EditProfile />}/>
+          <Route path="/profile/:param" element={<ProfilePage />}/>
+          <Route path="/profile/edit-profile" element={<EditProfile />}/>
+          <Route path="/profile/new-venue" element={<CreateNewVenue />}/>
         </Routes>
       </div>
     </Router>

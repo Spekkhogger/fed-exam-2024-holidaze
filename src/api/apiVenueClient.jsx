@@ -5,7 +5,7 @@ const apiVenueClient = {
     // Fetch all venues
     getAllVenues: async () => {
         try {
-            const response = await fetch(`${api_base}venues`, {
+            const response = await fetch(`${api_base}venues?_owner=true&_bookings=true`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,13 +35,13 @@ const apiVenueClient = {
 
 
     // Post new venue if admin
-    postNewVenue: async (data) => {
+    postNewVenue: async (data, token) => {
         try {
             const response = await fetch(`${api_base}venues`, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer {token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
         });
@@ -52,13 +52,13 @@ const apiVenueClient = {
     },
 
     // Edit venue if admin 
-    editVenue: async(id, data) => {
+    editVenue: async(data, id, token) => {
         try {
             const response = await fetch(`${api_base}venues/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer {useToken}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
             });
@@ -69,13 +69,13 @@ const apiVenueClient = {
     },
 
     // Delete venue if admin 
-    deleteVenue: async (id) => {
+    deleteVenue: async (id, token) => {
         try {
             const response = await fetch(`${api_base}venues/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer {useToken}`
+                    'Authorization': `Bearer ${token}`
                 }
             });
             return response.json(); 
