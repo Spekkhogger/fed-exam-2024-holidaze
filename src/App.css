@@ -159,7 +159,7 @@ nav {
   margin: 1rem;
   background-color: var(--main-white);
   border-radius: 10px;
-  max-width: 20%;
+  max-width: 50%;
 }
 
 
@@ -177,3 +177,22 @@ nav {
   height: 300px;
   object-fit: contain;
 } 
+
+.venue-info {
+  gap: 1rem
+}
+
+.venue-box {
+  background-color: var(--light-blue);
+  border: solid 1px var(--dark-blue);
+  padding: 1rem;
+  width: 100%;
+}
+
+
+/* Bookings on profile page */
+
+.booking-list {
+  display: flex;
+  flex-direction: row;
+}

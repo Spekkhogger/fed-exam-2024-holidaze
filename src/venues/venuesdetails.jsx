@@ -4,6 +4,8 @@ import apiVenueClient from "../api/apiVenueClient";
 import useOwner from "../api/auth/checkOwner";
 import { useToken } from "../stores/useUserStore";
 import DeleteButton from "../components/venueHandle/DeleteButton";
+import BookingCalendar from "../components/calendar/Calender";
+import BookNewVenue from "../components/calendar/BookVenue";
 
 const VenueDetails = () => {
     const [singleVenue, setSingleVenue] = useState([]);
@@ -25,8 +27,8 @@ const VenueDetails = () => {
       console.log(singleVenue)
     }, [id]);
 
-    const { location } = singleVenue;
-    const { address, city, country, lat, lng, zip } = location;
+    // const { location } = singleVenue;
+    // const { address, city, country, lat, lng, zip } = location;
 
     const ownerName = singleVenue.owner?.name;
     const isOwner = useOwner(ownerName);
@@ -35,12 +37,12 @@ const VenueDetails = () => {
       <div>
         <Link to="/browse"> Go back </Link>
         <div className="venue-page">
-          <h1>{singleVenue.name}</h1>
           <div className="venue-image-wrap">
             <img src={singleVenue.media} alt={singleVenue.name} className="venue-image"/>
           </div>
+          <h1>{singleVenue.name}</h1>
           <div className="venue-info flex flex-row">
-            <div className="venue-description">
+            <div className="venue-description venue-box">
               <p>{singleVenue.description}</p>
               <ul>
                 <li>Wifi:</li>
@@ -49,17 +51,17 @@ const VenueDetails = () => {
                 <li>Breakfast:</li>
               </ul>
             </div>
-            <div className="venue-location">
+            <div className="venue-box venue-location">
               <h3>Location</h3>
-              <p>{city}</p>
-              <p>{city}</p>
-              <p>{city}</p>
+              {/* <p>{location.address}</p> */}
             </div>
           </div>
           
         </div>
         {!isOwner ? (
-          <button className="button">Book</button>
+          <div>
+            <BookNewVenue />
+          </div>
         ) : (
           <div>
             <Link to={`/venues/${id}/edit`}>
@@ -69,6 +71,10 @@ const VenueDetails = () => {
               <button className="button">Handle bookings</button>
             </Link>
             <DeleteButton venueIdToDelete={id} token={token} />
+            <div>
+              <h3>Upcoming bookings:</h3>
+              <p>{singleVenue.bookings}</p>
+            </div>
           </div>
           )}
       </div>

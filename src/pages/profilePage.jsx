@@ -4,6 +4,7 @@ import { useToken, useRole, useUser } from "../stores/useUserStore";
 import useOwner from "../api/auth/checkOwner";
 import apiProfileClient from "../api/apiProfileClient";
 import ListOfVenuesByProfile from "../components/venueHandle/ManagerListOfVenues";
+import ListOfBookingsOnProfile from "../components/bookingsHandle/ListOfBookingsOnProfile";
 import { set } from "react-hook-form";
 
 function ProfilePage() {
@@ -11,7 +12,6 @@ function ProfilePage() {
     const navigate = useNavigate();
     const user = useUser();
     const role = useRole();
-    const avatar = user.avatar;
     const { param } = useParams();
     const [profile, setProfile] = useState({});
     const [profileVenues, setProfileVenues] = useState([]);
@@ -37,26 +37,41 @@ function ProfilePage() {
 
     return(
         <div>
-            <h1>{profile.name}</h1>
             <img src={`${profile.avatar}`} alt={`${profile.name} avatar`} />
+            <h1>{profile.name}</h1>
             {!owner ? (
                 <div>Not owner</div>
             ):(
                 <div>
                     <div>Is Owner</div>
-                    <Link to="/profile/new-venue" className="button">Add new venue</Link>
                     <Link to="/profile/edit-profile" className="button">Edit profile</Link>
-                    <div>
-                        <ul className="list-of-venues-manager-page">
-                            <li></li>
-                        </ul>
-                    </div>
-                    <h2>Venue List</h2>
-                    <div className="venue-list">
-                        {profile.venues.map((venue, index) => (
-                        <ListOfVenuesByProfile key={index} venue={venue} />
-                        ))}
-                    </div>
+                    {!role ? (
+                        <div>
+                            <h3>Your bookings</h3>
+                            <div className="booking-list">
+                                {profile.bookings.map((booking, index) => (
+                                <ListOfBookingsOnProfile key={index} bookings={booking} />
+                                ))}
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div>Is a manager</div>
+                            <Link to="/profile/new-venue" className="button">Add new venue</Link>
+                            
+                            <div>
+                                <ul className="list-of-venues-manager-page">
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <h2>Venue List</h2>
+                            <div className="venue-list">
+                                {profile.venues.map((venue, index) => (
+                                <ListOfVenuesByProfile key={index} venue={venue} />
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
 
                 </div>

@@ -11,7 +11,6 @@ function EditVenue() {
     const token = useToken();
     const user = useUser();
     const { id } = useParams();
-    console.log(id); 
     const [venue, setVenue] = useState({});
     const navigate = useNavigate();
 
@@ -23,7 +22,6 @@ function EditVenue() {
           try {
             const venueData = await apiVenueClient.getVenueById(id);
             setVenue(venueData);
-            console.log(venueData);
           } catch (error) {
             console.error('Error fetching venue:', error);
           }
@@ -54,14 +52,13 @@ function EditVenue() {
             data.media = data.media.split(',').map(url => url.trim());
 
             const response = await apiVenueClient.editVenue(data, id, token);
-            console.log(response);
         } catch (error) {
             console.error('Error editing venue:', error);
         }
     };
 
-    const { location } = venue;
-    const { address, city, country, lat, lng, zip } = location;
+    
+    // const { address, city, country, lat, lng, zip } = venue.location;
 
 
 
@@ -114,7 +111,7 @@ function EditVenue() {
                         </div>
 
                         <div>
-                            <input {...register('location.address')} type="text" className="input-field" placeholder={`${address}`}/>
+                            <input {...register('location.address')} type="text" className="input-field" placeholder={`${venue.address}`}/>
                         </div>
                         <div>
                             <input {...register('location.city')} type="text" className="input-field" placeholder={`${venue.city}`}/>
@@ -129,10 +126,10 @@ function EditVenue() {
                             <input {...register('location.continent')} type="text" className="input-field" placeholder={`${venue.continent}`}/>
                         </div>
                         <div>
-                            <input {...register('location.lat')} type="number" className="input-field" placeholder={`${lat}`}/>
+                            <input {...register('location.lat')} type="number" className="input-field" placeholder={`${venue.lat}`}/>
                         </div>
                         <div>
-                            <input {...register('location.lng')} type="number" className="input-field" placeholder={`${lng}`}/>
+                            <input {...register('location.lng')} type="number" className="input-field" placeholder={`${venue.lng}`}/>
                         </div>
 
                         <button type="submit" className="button">Create</button>
