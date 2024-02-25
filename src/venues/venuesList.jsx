@@ -23,7 +23,6 @@ const VenueList = () => {
   
     return (
       <div>
-        <h1>Venues</h1>
         <SearchFunction data={venues} />
       </div>
     );

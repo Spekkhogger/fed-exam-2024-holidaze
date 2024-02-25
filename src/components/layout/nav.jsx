@@ -33,19 +33,17 @@ export default function Navbar() {
                 <nav>
                     <ul>
                         <li>
-                            <NavLink to="/browse">Venues</NavLink>
+                            <NavLink to="/browse">Browse</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/about">About us</NavLink>
+                            <NavLink to={`/profile/${user.name}`}>Profile</NavLink>
                         </li>
                         <li>
-                            <NavLink to={`/profile/${user.name}`}><FontAwesomeIcon icon={faUser} className="icon" /></NavLink>
+                            <LogOut />
                         </li>
                     </ul>
                 </nav>
-                <div>
-                    <LogOut />
-                </div>
+
 
             </div>
         )}

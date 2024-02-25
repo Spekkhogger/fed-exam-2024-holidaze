@@ -11,8 +11,6 @@ import VenueDetails from './venues/SuperDetail';
 import CreateNewVenue from './pages/PostVenue';
 import EditVenue from './pages/EditVenuePage';
 
-import ContactPage from './pages/contactPage';
-
 import ProfilePage from './pages/profilePage';
 import EditProfile from './pages/EditProfile';
 
@@ -31,7 +29,6 @@ function App() {
           <Route path="/browse" element={<VenuePage />}/>
           <Route path="/venues/:id" element={<VenueDetails />}/>
           <Route path="/venues/:id/edit" element={<EditVenue />} />
-          <Route path="/contact" element={<ContactPage />}/>
           <Route path="/profile/:param" element={<ProfilePage />}/>
           <Route path="/profile/edit-profile" element={<EditProfile />}/>
           <Route path="/profile/new-venue" element={<CreateNewVenue />}/>

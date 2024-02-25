@@ -37,15 +37,15 @@ const SearchFunction = ({ data }) => {
   });
 
   return (
-    <div>
+    <div className='text-center'>
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleSearchChange}
-        className='input-field'
+        className='search-field'
       />
-      <div>
+      <div className='flex flex-row gap-2 text-center'>
         <label>
           <input
             type="checkbox"
@@ -86,14 +86,16 @@ const SearchFunction = ({ data }) => {
       <ul className='search-list'>
         {filteredData.map(item => (
           // <li key={item.id}>{item.name}</li>
-          <li key={item.id} className="card search-result">
-              <img src={item.media} alt={item.name} />
-              <div className='flex flex-col align-between'>
+          <li key={item.id} className="card search-result flex items-center space-x-4">
+              <div className="flex-none w-1/3 h-full">
+                <img src={item.media} alt={item.name} className="h-full w-full object-cover" />
+              </div>
+              <div className='flex-grow'>
                 <h3>{item.name}</h3>
                 <p>{item.location.country}</p>
                 <p>{item.description}</p>
               </div>
-              <div className='flex flex-col align-between'>
+              <div className='flex-none'>
                 <h4>${item.price}</h4>
                 <Link to={`/venues/${item.id}`} className='button'>See more<FontAwesomeIcon icon={faArrowRight} /></Link>
               </div>

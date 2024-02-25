@@ -51,11 +51,11 @@ export default function LogInPage() {
 
     return (
         <div className="log-in-form">
-            <div className="bg-white shadow-md rounded px-6 pt-6 pb-8">
-                <div className="mb-4 flex flex-col">
+            <div className="form-box">
+                <div className="form-content text-center w-4/5">
                     <h1>Log In</h1>
                     <form onSubmit={handleSubmit(onSubmit)}
-                    className="">
+                    className="flex flex-col gap-2">
                         <input 
                         {...register("email", 
                         {required: "Email is required",
@@ -63,7 +63,7 @@ export default function LogInPage() {
                         id="email"
                         type="email" 
                         placeholder="E-mail" 
-                        className="shadow border rounded w-full py-2 px-3"
+                        className="input-field"
                         />
                         {/* {errors.email && <p>{errors.message}</p>} */}
                         {/* {error && <p>{error}</p>} */}
@@ -75,21 +75,21 @@ export default function LogInPage() {
                         id="password"
                         type="password"
                         placeholder="Password"
-                        className="shadow border rounded w-full py-2 px-3" 
+                        className="input-field" 
                         />
                         {/* {errors.password && <p className="text-red-500">{errors.message}</p>} */}
 
                         <button 
                         type="submit"
-                        className="button w-full rounded"
+                        className="button"
                         >Log in</button>
                     </form>
                     <p>Forgot password?</p>
                 </div>
-                <div className="flex flex-col py-2">
+                <div className="flex flex-col py-2 text-center gap-2">
                     <p>New to Holidaze?</p>
-                    <Link to="/auth/register" className='button book-now-button'>Create new account</Link>
-                    <Link to="/auth/register-manager" className='button book-now-button'>Register as venue owner</Link>
+                    <Link to="/auth/register" className='button'>Create new account</Link>
+                    <Link to="/auth/register-manager" className='button'>Register as venue owner</Link>
                 </div>
             </div>
         </div>

@@ -40,22 +40,23 @@ export default function RegisterManager() {
             useUserActions.setUser(json);
 
             //Redirect to dashboard after successful login
-            navigate('/login'); 
+            
 
         } catch (error) {
             setError(error);
         } finally {
             setIsLoading(false);
+            navigate('/login'); 
         }
     }
 
     return (
         <div className="log-in-form">
-            <div className="bg-white shadow-md rounded px-6 pt-6 pb-8">
-                <div className="mb-4 flex flex-col">
+            <div className="form-box">
+                <div className="text-center">
                     <h1>Register as a venue owner</h1>
                     <form onSubmit={handleSubmit(onSubmit)}
-                    className="">
+                    className="flex flex-col gap-2 ">
                         <input 
                         {...register("name", 
                         {required: true,
@@ -63,7 +64,7 @@ export default function RegisterManager() {
                         })}
                         type="text" 
                         placeholder="Full name" 
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         required />
                         <input 
                         {...register("email", 
@@ -71,7 +72,7 @@ export default function RegisterManager() {
                         })}
                         type="email" 
                         placeholder="E-mail" 
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         required />
                         <input 
                         {...register("password", 
@@ -80,7 +81,7 @@ export default function RegisterManager() {
                         })}
                         type="password" 
                         placeholder="Password" 
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                        className="input-field"
                         required />
                         <input 
                         {...register("password", {
@@ -89,7 +90,7 @@ export default function RegisterManager() {
                         })}
                         type="password"
                         placeholder="Repeat password"
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         required/>
                         <input 
                         {...register("avatar", {
@@ -97,7 +98,7 @@ export default function RegisterManager() {
                         })}
                         type="url"
                         placeholder="Avatar URL"
-                        className="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" 
+                        className="input-field" 
                         />
                         <input
                         {...register("venueManager", {
@@ -114,9 +115,9 @@ export default function RegisterManager() {
                     </form>
                     <p>Forgot password?</p>
                 </div>
-                <div className="flex flex-col py-2">
-                    <Link to="/auth/register" className='button book-now-button'>Not a venue owner? Create account here</Link>
-                    <Link to="/auth/login" className='mt-5'>Already have an account? Log in here</Link>
+                <div className="flex flex-col py-2 text-center">
+                    <Link to="/auth/register" className='button'>Not a venue owner? Create account here</Link>
+                    <Link to="/auth/login" className='mt-5 button'>Already have an account? Log in here</Link>
                 </div>
             </div>
         </div>

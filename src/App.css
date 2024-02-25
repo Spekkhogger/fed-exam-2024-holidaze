@@ -14,9 +14,25 @@
   font-family: DM Sans, sans-serif;
 }
 
+nav {
+  display: flex;
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-blue);
+  color: var(--main-white);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
 .icon {
   color: var(--light-blue);
-  
 }
 
 /* Button design */
@@ -57,22 +73,7 @@ h1 {
 }
 
 
-/* Here we place the navigation design */
-nav {
-  display: flex;
-  padding: 1rem;
-  font-family: "DM Sans", sans-serif;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: var(--dark-blue);
-  color: var(--main-white);
-}
-
-nav ul {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-}
+/* The login page */
 
 .logo {
   font-size: 20pt;
@@ -81,7 +82,7 @@ nav ul {
 }
 
 .logInButton {
-  border: none;
+  border: 1px solid var(--light-blue);
   color: var(--dark-blue);
   letter-spacing: 0.5pt;
   border-radius: 20px;
@@ -99,7 +100,9 @@ nav ul {
 }
 
 .logInButton:hover {
-  background-color: #275F77;
+  border: 1px solid var(--light-blue);
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
 }
 
 .log-in-form {
@@ -115,6 +118,18 @@ nav ul {
   background-color: var(--dark-blue);
 }
 
+/* General forms */
+.form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  gap: 1rem;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  min-width: 30rem;
+}
+
 
 /* Components */
 .input-field {
@@ -125,8 +140,17 @@ nav ul {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
+
 .input-field:hover {
   background-color: white;
+}
+
+.search-field {
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid var(--dark-blue);
+  width: 80%;
 }
 
 .card {
@@ -134,6 +158,13 @@ nav ul {
   margin: 1rem;
   background-color: var(--main-white);
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  max-height: 100%; /* Ensures image height does not exceed container */
+  max-width: 100%; /* Ensures image width does not exceed container */
+  object-fit: cover; /* Covers the area without stretching the image */
 }
 
 .search-list {
@@ -152,14 +183,6 @@ nav ul {
   min-width: 80%;
   min-height: 200px;
   max-height: 200px;
-}
-
-.search-result img {
-  width: 100%;
-  height: 200px;
-  padding: 1em;
-  object-fit: contain;
-  border-radius: 10px;
 }
 
 
