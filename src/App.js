@@ -7,7 +7,7 @@ import RegisterUser from './pages/authPages/registerUserPage';
 import RegisterManager from './pages/authPages/registerManagerPage';
 
 import VenuePage from './pages/venuePage';
-import VenueDetails from './venues/Venuesdetails';
+import VenueDetails from './venues/SuperDetail';
 import CreateNewVenue from './pages/PostVenue';
 import EditVenue from './pages/EditVenuePage';
 
