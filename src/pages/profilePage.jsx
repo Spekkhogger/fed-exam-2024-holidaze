@@ -36,7 +36,7 @@ function ProfilePage() {
       const owner = useOwner(profile.name);
 
     return(
-        <div>
+        <div className="flex justify-center text-center flex-col">
             <img src={`${profile.avatar}`} alt={`${profile.name} avatar`} />
             <h1>{profile.name}</h1>
             {!owner ? (

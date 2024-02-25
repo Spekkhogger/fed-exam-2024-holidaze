@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const SearchFunction = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -80,13 +83,27 @@ const SearchFunction = ({ data }) => {
           Breakfast
         </label>
       </div>
-      <ul>
+      <ul className='search-list'>
         {filteredData.map(item => (
-          <li key={item.id}>{item.name}</li>
+          // <li key={item.id}>{item.name}</li>
+          <li key={item.id} className="card search-result">
+              <img src={item.media} alt={item.name} />
+              <div className='flex flex-col align-between'>
+                <h3>{item.name}</h3>
+                <p>{item.location.country}</p>
+                <p>{item.description}</p>
+              </div>
+              <div className='flex flex-col align-between'>
+                <h4>${item.price}</h4>
+                <Link to={`/venues/${item.id}`} className='button'>See more<FontAwesomeIcon icon={faArrowRight} /></Link>
+              </div>
+          </li> 
         ))}
       </ul>
     </div>
   );
 };
+
+
 
 export default SearchFunction;

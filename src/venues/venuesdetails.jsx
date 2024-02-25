@@ -4,6 +4,7 @@ import apiVenueClient from "../api/apiVenueClient";
 import useOwner from "../api/auth/checkOwner";
 import { useToken } from "../stores/useUserStore";
 import DeleteButton from "../components/venueHandle/DeleteButton";
+import ShowUpcomingBookingsOnVenue from "../components/bookingsHandle/ShowUpcomingBookingsOnVenue";
 import BookingCalendar from "../components/calendar/Calender";
 import BookNewVenue from "../components/calendar/BookVenue";
 
@@ -73,7 +74,12 @@ const VenueDetails = () => {
             <DeleteButton venueIdToDelete={id} token={token} />
             <div>
               <h3>Upcoming bookings:</h3>
-              <p>{singleVenue.bookings}</p>
+              <div>
+                {singleVenue.bookings.map((booking, index) => (
+                <ShowUpcomingBookingsOnVenue key={index} bookings={booking} />
+                ))}
+              </div>
+              
             </div>
           </div>
           )}

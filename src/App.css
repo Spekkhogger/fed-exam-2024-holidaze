@@ -11,6 +11,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: DM Sans, sans-serif;
 }
 
 .icon {
@@ -18,7 +19,7 @@
   
 }
 
-/* Buttons design */
+/* Button design */
 .button {
   position: relative;
   cursor: pointer;
@@ -32,6 +33,7 @@
   font-weight: 400;
   font-size: 15px;
   outline: none;
+  max-width: 200px;
 }
 
 .delete-button {
@@ -47,45 +49,13 @@
   font-size: 15px;
 }
 
-.read-more-button {
-  vertical-align: middle;
-  display: inline-block;
-  width: 12rem;
-  height: auto;
- 
+/* Font and headings */
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--dark-blue);
 }
 
-.book-now-button {
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
-  border: 3px solid var(--blue);
-}
-
-.book-now-button:hover {
-  transform: scale(1.05);
-  border-color: var(--light-blue); 
-}
-
-.book-now-button:hover::before {
-  animation: shine 1.5s ease-out infinite;
-}
-
-.book-now-button::before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100%;
-  background-image: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0) 70%
-  );
-  top: 0;
-  left: -100px;
-  opacity: 0.6;
-}
 
 /* Here we place the navigation design */
 nav {
@@ -96,6 +66,12 @@ nav {
   justify-content: space-between;
   background-color: var(--dark-blue);
   color: var(--main-white);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
 
 .logo {
@@ -144,22 +120,46 @@ nav {
 .input-field {
   padding: 0.5rem;
   background-color: var(--main-white);
-  border-radius: 10px;
+  border-radius: 3px;
   border: 1px solid var(--dark-blue);
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
+.input-field:hover {
+  background-color: white;
+}
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 1rem;
   margin: 1rem;
   background-color: var(--main-white);
   border-radius: 10px;
-  max-width: 50%;
+}
+
+.search-list {
+  display: flex; 
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center; 
+}
+
+.search-result {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80%;
+  min-width: 80%;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.search-result img {
+  width: 100%;
+  height: 200px;
+  padding: 1em;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 

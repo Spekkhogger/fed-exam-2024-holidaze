@@ -2,6 +2,7 @@ import { useRole, useToken } from "../stores/useUserStore"
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import apiVenueClient from "../api/apiVenueClient";
+import { Link } from "react-router-dom";
 
 function CreateNewVenue() { 
     const manager = useRole();
@@ -51,8 +52,9 @@ function CreateNewVenue() {
             {!manager ? (
                 <div> Register as manager to post a venue </div>
             ) : (
-                <div>
-                    <h1>Create New Venue</h1>
+                <div className="m-2">
+                    {/* <Link to="/profile/" className="">Go back to profile</Link> */}
+                    <h1 className="text-center">Create New Venue</h1>
                     <form onSubmit={handleSubmit(onSubmit)} action="submit" className="shadow-md rounded px-6 pt-6 pb-8 gap-3 grid">
                         <div>
                             <input {...register('name')} type="text" className="input-field" placeholder="Name of venue"/>

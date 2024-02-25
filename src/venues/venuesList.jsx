@@ -25,20 +25,6 @@ const VenueList = () => {
       <div>
         <h1>Venues</h1>
         <SearchFunction data={venues} />
-        <ul>
-          {venues.map((venue) => (
-            
-            <li key={venue.id} className="card">
-                <Link to={`/venues/${venue.id}`}>
-                  <img src={venue.media} alt={venue.name} />
-                  <h3>{venue.name}</h3>
-                </Link>
-                <Link to={`/profile/${venue.owner.name}`} className="button">
-                  <p>{venue.owner.name}</p>
-                </Link>
-            </li> 
-          ))}
-        </ul>
       </div>
     );
   };
