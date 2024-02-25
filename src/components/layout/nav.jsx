@@ -39,9 +39,6 @@ export default function Navbar() {
                             <NavLink to="/about">About us</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/contact">Contact us</NavLink>
-                        </li>
-                        <li>
                             <NavLink to={`/profile/${user.name}`}><FontAwesomeIcon icon={faUser} className="icon" /></NavLink>
                         </li>
                     </ul>

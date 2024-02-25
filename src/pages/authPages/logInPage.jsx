@@ -9,7 +9,7 @@ import { api_base } from '../../api/apiURL';
 
 
 export default function LogInPage() {
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: {errors} } = useForm();
     const { setUser, setLoggedInStatus } = useUserActions();
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = useState(null);
@@ -17,10 +17,7 @@ export default function LogInPage() {
     const navigate = useNavigate();
 
     async function onSubmit(data) {
-        console.log(data); 
-
         // Post request to API
-
         const options = {
             headers: {
                 'Content-Type': 'application/json',
@@ -33,29 +30,24 @@ export default function LogInPage() {
             setIsLoading(true);
             setError(null);
             const response = await fetch(`${api_base}auth/login`, options);
-            const json = await response.json();
-            console.log(json);
 
-            if (!response.ok) {
-                return setError(json);
+            const json = await response.json();
+            if(response.ok){
+                setUser(json);
+                setLoggedInStatus(true);
+            } else {
+                setError(json.message);
             }
+            // console.log(json);
 
             // Save user in global state
-            setUser(json);
-            setLoggedInStatus(true);
-
-            //Redirect to dashboard after successful login
-            // navigate('/'); 
-        
 
         } catch (error) {
-            setError(error);
-
-        } finally {
+            console.error('Error logging in:', error);
+        }  finally {
             setIsLoading(false);
-            navigate('/');
-        }
-    }
+            navigate('/browse');
+        }}
 
     return (
         <div className="log-in-form">
@@ -66,20 +58,27 @@ export default function LogInPage() {
                     className="">
                         <input 
                         {...register("email", 
-                        {required: true,
+                        {required: "Email is required",
                         })}
+                        id="email"
                         type="email" 
                         placeholder="E-mail" 
                         className="shadow border rounded w-full py-2 px-3"
-                        required />
+                        />
+                        {/* {errors.email && <p>{errors.message}</p>} */}
+                        {/* {error && <p>{error}</p>} */}
+
                         <input 
                         {...register("password", {
-                            required: true,
+                            required: "Password is required",
                         })}
+                        id="password"
                         type="password"
                         placeholder="Password"
                         className="shadow border rounded w-full py-2 px-3" 
-                        required/>
+                        />
+                        {/* {errors.password && <p className="text-red-500">{errors.message}</p>} */}
+
                         <button 
                         type="submit"
                         className="button w-full rounded"
