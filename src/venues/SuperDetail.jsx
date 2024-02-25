@@ -84,6 +84,7 @@ const VenueDetails = () => {
             <div className="p-5 info-box items-center text-center object-center align-center">
               <h4>About {singleVenue.name}</h4>
               <p>{singleVenue.description}</p>
+              <p className="mt-3">Price per night: ${singleVenue.price}</p>
             </div>
             <div className="flex flex-row justify-between">
               <div className="w-2/5 info-box">
