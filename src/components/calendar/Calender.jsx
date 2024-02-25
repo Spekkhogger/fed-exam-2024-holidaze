@@ -24,7 +24,6 @@ const BookingCalendar = () => {
         onChange={handleDateChange}
         value={selectedDate}
         tileContent={({ date, view }) =>
-          // You can customize the appearance of dates with bookings here
           bookings[date.toISOString()] && view === 'month' ? (
             <p>Booked</p>
           ) : null

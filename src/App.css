@@ -31,6 +31,10 @@ nav ul {
   gap: 1em;
 }
 
+.navItem:hover {
+  text-decoration: underline;
+}
+
 .icon {
   color: var(--light-blue);
 }
@@ -193,6 +197,14 @@ h4{
   background-color: white;
 }
 
+checkbox {
+  width: 10px;
+}
+.checkbox-field:checked {
+  background-color: var(--dark-blue);
+  color: var(--main-white);
+}
+
 .search-field {
   padding: 0.5rem;
   background-color: white;
@@ -240,13 +252,15 @@ h4{
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  margin: 2rem;
-  border: 1px solid red; 
+  margin: 1rem 5rem;;
 }
 
+.venue-image img {
+  max-height: 500px;
+  max-width: 100%;
+  object-fit: cover;
+  overflow: hidden;
 
-.info-box {
-  border: 1px solid red; 
 }
 
 /* Booking a venue on venue page */

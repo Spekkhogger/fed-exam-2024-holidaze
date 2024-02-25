@@ -38,7 +38,6 @@ export default function LogInPage() {
             } else {
                 setError(json.message);
             }
-            // console.log(json);
 
             // Save user in global state
 

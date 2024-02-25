@@ -55,8 +55,7 @@ function ProfilePage() {
                         </div>
                     ) : (
                         <div>
-                            <div>Is a manager</div>
-                            <Link to="/profile/new-venue" className="button">Add new venue</Link>
+                            
                             
                             <div>
                                 <ul className="list-of-venues-manager-page">
@@ -69,10 +68,13 @@ function ProfilePage() {
                                 <ListOfVenuesByProfile key={index} venue={venue} />
                                 ))}
                             </div>
+                            <div className="flex justify-center">
+                                <Link to="/profile/new-venue" className="button">Add new venue</Link>
+                            </div>
                         </div>
                     )}
                     <div className="flex flex-col mt-5 flex-wrap overflow-hidden">
-                        <h3>Your bookings</h3>
+                        <h2>Your bookings</h2>
                         <div className="booking-list">
                             {profile.bookings.map((booking, index) => (
                             <ListOfBookingsOnProfile key={index} bookings={booking} />

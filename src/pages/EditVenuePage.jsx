@@ -53,7 +53,6 @@ function EditVenue() {
             const response = await apiVenueClient.editVenue(data, id, token);
             if (response.status === 200) {
                 navigate(`/venues/${id}`);
-                console.log('Venue edited successfully:', response);
             }
 
         } catch (error) {

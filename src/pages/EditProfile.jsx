@@ -24,9 +24,9 @@ function EditProfile() {
     
 
     return (
-        <div className="shadow-md rounded px-6 pt-6 pb-8">
+        <div className="shadow-md rounded px-6 pt-6 pb-8 flex flex-col gap-4">
             <Link to={`/profile/${user.name}`} className="">Go back</Link>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-2/5 flex flex-col gap-5">
                 <div>
                     <label>Name:</label>
                     <input

@@ -17,11 +17,11 @@ export default function Navbar() {
         <nav className="nav">
             <div>
                 <NavLink to="/" className="logo">Holidaze</NavLink>
-
             </div>
         {!token ? (
             <div>
-                <div>
+                <div className="flex align-center gap-3">
+                    <NavLink to="/browse" className="navItem">Browse</NavLink>
                     <NavLink to="/auth/login" className="button logInButton">
                         <FontAwesomeIcon icon={faUser} className="logInIcon" />
                         Log In
@@ -33,18 +33,16 @@ export default function Navbar() {
                 <nav>
                     <ul>
                         <li>
-                            <NavLink to="/browse">Browse</NavLink>
+                            <NavLink to="/browse" className="navItem">Browse</NavLink>
                         </li>
                         <li>
-                            <NavLink to={`/profile/${user.name}`}>Profile</NavLink>
+                            <NavLink to={`/profile/${user.name}`} className="navItem">Profile</NavLink>
                         </li>
                         <li>
-                            <LogOut />
+                            <LogOut/>
                         </li>
                     </ul>
                 </nav>
-
-
             </div>
         )}
         </nav>

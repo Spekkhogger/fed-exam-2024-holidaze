@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 const BookNewVenue = () => {
     const token = useToken();
     const { id } = useParams();
-    console.log(token)
 
   const [dateFrom, setDateFrom] = useState(new Date());
   const [dateTo, setDateTo] = useState(new Date());
@@ -36,8 +35,6 @@ const BookNewVenue = () => {
 
     try {
       const data = await apiBookingClient.createNewBooking(bookingData, token);
-      console.log('Booking created:', data);
-      // Optionally, you can add logic here to handle success cases
     } catch (error) {
       console.error('Error creating booking:', error);
     }

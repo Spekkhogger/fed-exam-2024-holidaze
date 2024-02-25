@@ -31,10 +31,10 @@ function CreateNewVenue() {
 
         data.media = data.media.split(',').map(url => url.trim());
 
-        console.log(data); 
+        
         const response = await apiVenueClient.postNewVenue(data, token);
-        console.log(response.id);
-        console.log('Venue created successfully:', response);
+        
+        
         // If response is OK redirect to the new venue
         if (response.ok) {
             navigate(`/venues/${response.id}`);
@@ -55,7 +55,7 @@ function CreateNewVenue() {
                 <div className="m-2">
                     {/* <Link to="/profile/" className="">Go back to profile</Link> */}
                     <h1 className="text-center">Create New Venue</h1>
-                    <form onSubmit={handleSubmit(onSubmit)} action="submit" className="shadow-md rounded px-6 pt-6 pb-8 gap-3 grid">
+                    <form onSubmit={handleSubmit(onSubmit)} action="submit" className="flex flex-col gap-2 w-2/4 justify-center">
                         <div>
                             <input {...register('name')} type="text" className="input-field" placeholder="Name of venue"/>
                         </div>
@@ -74,27 +74,27 @@ function CreateNewVenue() {
                         <div>
                             <input {...register('Rating')} type="number" className="input-field" placeholder="Rating: 1-5"/>
                         </div>
-                        <div>
+                        <div className="flex flex-row gap-10">
                             {/* Fix this so it makes sense for user */}
-                            <p>Select:</p>
+                            <p>Select facilities:</p>
                             <div className="flex">
                                 <label> Wifi
-                                    <input {...register('meta.wifi')} type="checkbox" className="input-field" placeholder="Wifi"/>
+                                    <input {...register('meta.wifi')} type="checkbox" className="w-4 h-4 text-blue-600 ml-2" placeholder="Wifi"/>
                                 </label>
                             </div>
                             <div className="flex">
                                 <label> Parking
-                                <input {...register('meta.parking')} type="checkbox" className="input-field" placeholder="Parking"/>
+                                <input {...register('meta.parking')} type="checkbox" className="w-4 h-4 text-blue-600 ml-2" placeholder="Parking"/>
                                 </label>
                             </div>
                             <div className="flex">
                                 <label> Breakfast
-                                <input {...register('meta.breakfast')} type="checkbox" className="input-field" placeholder="Breakfast"/>
+                                <input {...register('meta.breakfast')} type="checkbox" className="w-4 h-4 text-blue-600 ml-2" placeholder="Breakfast"/>
                                 </label>
                             </div>
                             <div className="flex">
                                 <label> Pets
-                                <input {...register('meta.pets')} type="checkbox" className="input-field" placeholder="Pets"/>
+                                <input {...register('meta.pets')} type="checkbox" className="w-4 h-4 text-blue-600 ml-2" placeholder="Pets"/>
                                 </label>
                             </div>
                             

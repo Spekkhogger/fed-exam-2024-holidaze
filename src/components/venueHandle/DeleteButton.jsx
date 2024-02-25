@@ -9,7 +9,6 @@ function DeleteButton({ venueIdToDelete, token }) {
     const handleDelete = async () => {
         try {
         const response = await apiVenueClient.deleteVenue(venueIdToDelete, token);
-        console.log('Venue deleted successfully:', response);
         // After deletion navigate to browse page
         // navigate('/browse');
         } catch (error) {

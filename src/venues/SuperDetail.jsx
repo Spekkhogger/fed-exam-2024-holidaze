@@ -18,18 +18,50 @@ const VenueDetails = () => {
         try {
           const venueData = await apiVenueClient.getVenueById(id);
           setSingleVenue(venueData);
-          console.log(venueData);
         } catch (error) {
           console.error('Error fetching venue:', error);
         }
       };
   
       fetchVenue();
-      console.log(singleVenue)
     }, [id]);
 
     // const { location } = singleVenue;
     // const { address, city, country, lat, lng, zip } = location;
+    const address = singleVenue.location?.address;
+    const city = singleVenue.location?.city;
+    const country = singleVenue.location?.country;
+    const lat = singleVenue.location?.lat;
+    const lng = singleVenue.location?.lng;
+    const zip = singleVenue.location?.zip;
+    
+    var parking = singleVenue.meta?.parking
+    if (!parking){
+      var parking = "No";
+    } else {
+      parking = "Yes";
+    }
+
+    var pets = singleVenue.meta?.pets
+    if (!pets){
+      var pets = "No";
+    } else {
+      parking = "Yes";
+    }
+
+    var breakfast = singleVenue.meta?.breakfast
+    if (!breakfast){
+      var breakfast = "No";
+    } else {
+      parking = "Yes";
+    }
+
+    var wifi = singleVenue.meta?.wifi
+    if (!wifi){
+      wifi = "No";
+    } else {
+      parking = "Yes";
+    }
 
     if (singleVenue.media < 1) {
       singleVenue.media = "https://placehold.co/600x400";
@@ -42,12 +74,14 @@ const VenueDetails = () => {
       <div>
         <Link to="/browse"> Go back </Link>
         <div className="venue-page">
-          <h1 className="text-center">{singleVenue.name}</h1>
-          <div className="">
-            <img src={singleVenue.media} alt={singleVenue.name} className=""/>
+          <div className="flex flex-col items-center">
+            <h1 className="text-center">{singleVenue.name}</h1>
+            <div className="venue-image">
+              <img src={singleVenue.media} alt={singleVenue.name} className=""/>
+            </div>
           </div>
           <div className="flex flex-col gap-10">
-            <div className="p-5 info-box">
+            <div className="p-5 info-box items-center text-center object-center align-center">
               <h4>About {singleVenue.name}</h4>
               <p>{singleVenue.description}</p>
             </div>
@@ -55,15 +89,18 @@ const VenueDetails = () => {
               <div className="w-2/5 info-box">
                 <h3>Facilities</h3>
                 <ul className="list-disc pl-5">
-                  <li>Wifi:</li>
-                  <li>Parking:</li>
-                  <li>Pets:</li>
-                  <li>Breakfast:</li>
+                  <li>Wifi: {wifi}</li>
+                  <li>Parking: {parking}</li>
+                  <li>Pets: {pets}</li>
+                  <li>Breakfast: {breakfast}</li>
                 </ul>
               </div>
               <div className="p-5 w-2/5 info-box">
                 <h3>Location</h3>
-                {/* <p>{location.address}</p> */}
+                <p>Country: {country}</p>
+                <p>City: {city}</p>
+                <p>Zip code: {zip}</p>
+                <p>Address: {address}</p>
               </div>
             </div>
           </div>
