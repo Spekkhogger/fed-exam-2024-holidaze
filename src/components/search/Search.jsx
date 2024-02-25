@@ -88,7 +88,13 @@ const SearchFunction = ({ data }) => {
           // <li key={item.id}>{item.name}</li>
           <li key={item.id} className="card search-result flex items-center space-x-4">
               <div className="flex-none w-1/3 h-full">
-                <img src={item.media} alt={item.name} className="h-full w-full object-cover" />
+
+                {item.media > 1 ? (
+                  <img src="https://placehold.co/600x400" alt={item.name} className="h-full w-full object-cover" />
+                ) : (
+                  <img src={item.media} alt={item.name} className="h-full w-full object-cover" />
+                )}
+
               </div>
               <div className='flex-grow'>
                 <h3>{item.name}</h3>

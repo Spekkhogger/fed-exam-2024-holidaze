@@ -31,6 +31,10 @@ const VenueDetails = () => {
     // const { location } = singleVenue;
     // const { address, city, country, lat, lng, zip } = location;
 
+    if (singleVenue.media < 1) {
+      singleVenue.media = "https://placehold.co/600x400";
+    }
+
     const ownerName = singleVenue.owner?.name;
     const isOwner = useOwner(ownerName);
   
@@ -38,23 +42,29 @@ const VenueDetails = () => {
       <div>
         <Link to="/browse"> Go back </Link>
         <div className="venue-page">
-          <div className="venue-image-wrap">
-            <img src={singleVenue.media} alt={singleVenue.name} className="venue-image"/>
+          <h1 className="text-center">{singleVenue.name}</h1>
+          <div className="">
+            <img src={singleVenue.media} alt={singleVenue.name} className=""/>
           </div>
-          <h1>{singleVenue.name}</h1>
-          <div className="venue-info flex flex-row">
-            <div className="venue-description venue-box">
+          <div className="flex flex-col gap-10">
+            <div className="p-5 info-box">
+              <h4>About {singleVenue.name}</h4>
               <p>{singleVenue.description}</p>
-              <ul>
-                <li>Wifi:</li>
-                <li>Parking:</li>
-                <li>Pets:</li>
-                <li>Breakfast:</li>
-              </ul>
             </div>
-            <div className="venue-box venue-location">
-              <h3>Location</h3>
-              {/* <p>{location.address}</p> */}
+            <div className="flex flex-row justify-between">
+              <div className="w-2/5 info-box">
+                <h3>Facilities</h3>
+                <ul className="list-disc pl-5">
+                  <li>Wifi:</li>
+                  <li>Parking:</li>
+                  <li>Pets:</li>
+                  <li>Breakfast:</li>
+                </ul>
+              </div>
+              <div className="p-5 w-2/5 info-box">
+                <h3>Location</h3>
+                {/* <p>{location.address}</p> */}
+              </div>
             </div>
           </div>
           

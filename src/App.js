@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"; 
 import { useNavigate } from 'react-router-dom';
 import Navbar from './components/layout/Nav';
+import Footer from './components/layout/footer';
 import LogInPage from './pages/authPages/logInPage';
 import RegisterUser from './pages/authPages/registerUserPage';
 import RegisterManager from './pages/authPages/registerManagerPage';
@@ -22,7 +23,7 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/"></Route>
+          <Route path="/" element={<VenuePage />} />
           <Route path="/auth/login" element={<LogInPage />}/>
           <Route path="/auth/register" element={<RegisterUser />}/>
           <Route path="/auth/register-manager" element={<RegisterManager />}/>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile/edit-profile" element={<EditProfile />}/>
           <Route path="/profile/new-venue" element={<CreateNewVenue />}/>
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

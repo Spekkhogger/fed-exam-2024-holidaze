@@ -45,21 +45,23 @@ const BookNewVenue = () => {
 
 
   return (
-    <div>
-      <h2>Make a Booking</h2>
-      <div>
-        <label>Date From:</label>
-        <Calendar onChange={handleDateFromChange} value={dateFrom} />
+    <div className='booking-box flex flex-col pb-10 pl-10 pr-10 gap-5'>
+      <h2 className='text-white text-center'>Make a Booking</h2>
+      <div className='flex justify-evenly'>
+        <div>
+          <label className='text-white'>Date From:</label>
+          <Calendar onChange={handleDateFromChange} value={dateFrom} />
+        </div>
+        <div>
+          <label className='text-white'>Date To:</label>
+          <Calendar onChange={handleDateToChange} value={dateTo} />
+        </div>
       </div>
-      <div>
-        <label>Date To:</label>
-        <Calendar onChange={handleDateToChange} value={dateTo} />
+      <div className='text-center w-2/5'>
+        <label className='text-white'>Number of Guests: (1-10)</label>
+        <input type="number" value={guests} onChange={handleNumGuestsChange} className='input-field' max="10" />
       </div>
-      <div>
-        <label>Number of Guests:</label>
-        <input type="number" value={guests} onChange={handleNumGuestsChange} />
-      </div>
-      <button onClick={handleBookingSubmit}>Book Now</button>
+      <button onClick={handleBookingSubmit} className='light-button'>Book Now</button>
     </div>
   );
 };

@@ -22,37 +22,36 @@ function ProfilePage() {
             const profileData = await apiProfileClient.getProfileByName(param, token);
             setProfile(profileData);
             setProfileVenues(profileData.venues);
-            console.log(profileData.venues); 
-            console.log(profileData);
           } catch (error) {
             console.error('Error fetching profile:', error);
           }
         };
     
         getProfile();
-        console.log(profile);
       }, [param, token]);
 
       const owner = useOwner(profile.name);
+      if (profile.avatar === "") {
+        profile.avatar = "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"; 
+      }
 
     return(
-        <div className="flex justify-center text-center flex-col">
-            <img src={`${profile.avatar}`} alt={`${profile.name} avatar`} />
+        <div className="flex text-center flex-col m-5">
+            <div className="flex justify-center">
+                <img src={`${profile.avatar}`} alt={`${profile.name} avatar`} className="rounded-full profile-image" />
+            </div>
             <h1>{profile.name}</h1>
+            <p>{profile.email}</p>
             {!owner ? (
-                <div>Not owner</div>
+                <div></div>
             ):(
-                <div>
-                    <div>Is Owner</div>
-                    <Link to="/profile/edit-profile" className="button">Edit profile</Link>
+                <div className="flex flex-col mt-5">
+                    <div className="flex justify-center">
+
+                        <Link to="/profile/edit-profile" className="button">Edit profile</Link>
+                    </div>
                     {!role ? (
                         <div>
-                            <h3>Your bookings</h3>
-                            <div className="booking-list">
-                                {profile.bookings.map((booking, index) => (
-                                <ListOfBookingsOnProfile key={index} bookings={booking} />
-                                ))}
-                            </div>
                         </div>
                     ) : (
                         <div>
@@ -72,8 +71,14 @@ function ProfilePage() {
                             </div>
                         </div>
                     )}
-
-
+                    <div className="flex flex-col mt-5 flex-wrap overflow-hidden">
+                        <h3>Your bookings</h3>
+                        <div className="booking-list">
+                            {profile.bookings.map((booking, index) => (
+                            <ListOfBookingsOnProfile key={index} bookings={booking} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             )}
 

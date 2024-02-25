@@ -25,7 +25,7 @@ function EditProfile() {
 
     return (
         <div className="shadow-md rounded px-6 pt-6 pb-8">
-            <Link to={`/profile/${user.name}`} className="button">Go back</Link>
+            <Link to={`/profile/${user.name}`} className="">Go back</Link>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Name:</label>
@@ -33,7 +33,7 @@ function EditProfile() {
                         type="text"
                         {...register('name', { required: false })}
                         placeholder={`${user.name}`}
-
+                        className="input-field"
                     />
                     {errors.name && <span>Name is required</span>}
                 </div>
@@ -43,6 +43,7 @@ function EditProfile() {
                         type="text"
                         {...register('avatar', { required: false })}
                         placeholder="URL"
+                        className="input-field"
                     />
                     {errors.avatar && <span>Avatar is required</span>}
                 </div>
