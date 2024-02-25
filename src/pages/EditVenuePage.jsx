@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 import apiVenueClient from "../api/apiVenueClient";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useUser } from "../stores/useUserStore";
 import { useToken } from "../stores/useUserStore";
 
@@ -52,6 +51,11 @@ function EditVenue() {
             data.media = data.media.split(',').map(url => url.trim());
 
             const response = await apiVenueClient.editVenue(data, id, token);
+            if (response.status === 200) {
+                navigate(`/venues/${id}`);
+                console.log('Venue edited successfully:', response);
+            }
+
         } catch (error) {
             console.error('Error editing venue:', error);
         }
@@ -132,7 +136,7 @@ function EditVenue() {
                             <input {...register('location.lng')} type="number" className="input-field" placeholder={`${venue.lng}`}/>
                         </div>
 
-                        <button type="submit" className="button">Create</button>
+                        <button type="submit" className="button">Edit profile</button>
             </form>
         </div>
     )
